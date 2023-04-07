@@ -1,0 +1,10 @@
+Script started on 2023-04-07 22:00:09+07:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="158" LINES="78"]
+]0;dmnalex@starsaber: ~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[01;32mdmnalex@starsaber[00m:[01;34m~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[00m$ docker container run -it ubuntu bash
+[?2004h]0;root@e8f9ddc9205f: /root@e8f9ddc9205f:/# ma kdir [7m/usr/src/app[27m/usr/src/app
+[?2004l[?2004h]0;root@e8f9ddc9205f: /root@e8f9ddc9205f:/# touch [7m/usr/src/app/index.js[27m/usr/src/app/index.js
+[?2004l[?2004h]0;root@e8f9ddc9205f: /root@e8f9ddc9205f:/# [Kexit
+[?2004lexit
+]0;dmnalex@starsaber: ~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[01;32mdmnalex@starsaber[00m:[01;34m~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[00m$ t[Kexit
+exit
+
+Script done on 2023-04-07 22:06:24+07:00 [COMMAND_EXIT_CODE="0"]
