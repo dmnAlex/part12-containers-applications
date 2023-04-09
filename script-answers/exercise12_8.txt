@@ -1,0 +1,150 @@
+Script started on 2023-04-10 00:09:07+07:00 [TERM="xterm-256color" TTY="/dev/pts/7" COLUMNS="158" LINES="76"]
+]0;dmnalex@starsaber: ~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[01;32mdmnalex@starsaber[00m:[01;34m~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[00m$ d[Kdocker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS         PORTS                                         NAMES
+0e8ed1310802   mongo     "docker-entrypoint.s…"   31 minutes ago   Up 2 minutes   0.0.0.0:3456->27017/tcp, :::3456->27017/tcp   todo-backend-mongo-1
+]0;dmnalex@starsaber: ~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[01;32mdmnalex@starsaber[00m:[01;34m~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[00m$ docker exec -it todo-backend-mongo-1 back[K[Ksh
+[?2004hroot@0e8ed1310802:/# ma ongosh [7m-u root -p example[27m-u root -p example
+[?2004l]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	6432f17dbc824bd25740950d
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0[0m
+Using MongoDB:		6.0.5
+[1m[33mUsing Mongosh[0m:		1.8.0
+
+For mongosh info see: [1mhttps://docs.mongodb.com/mongodb-shell/[0m
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the [1mdisableTelemetry()[0m command.
+
+[1G[0J [1G[1m[33m------[0m
+   [1m[33mThe server generated these startup warnings when booting[0m
+   2023-04-09T17:06:52.691+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2023-04-09T17:06:53.335+00:00: vm.max_map_count is too low
+[1m[33m------[0m
+
+[1m[33m------[0m
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+[1m[33m------[0m
+
+[1G[0Jtest> [7Gshow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m         60.00 KiB
+[1mlocal[0m          72.00 KiB
+[1mthe_database[0m   72.00 KiB
+[1G[0Jtest> [7Guse the_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.totos.find({})
+
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.totos.find({})[32G[1D[1G[0Jthe_database> db.totos.find[44m([49m{})[31G[1D[1G[0Jthe_database> db.totos.find([44m{[49m})[30G[1D[1G[0Jthe_database> db.totos.find({[44m}[49m)[29G[1D[1G[0Jthe_database> db.totos.find({}[44m)[49m[28G[1D[1G[0Jthe_database> db.totos.find({})[27G[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.toos.find({})[20G[1G[0Jthe_database> db.todos.find({})[21G[11C
+[
+  {
+    _id: ObjectId("6432e9c60ffbcf89a657df38"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("6432e9c60ffbcf89a657df39"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("6432ea0a5c86c16f545c631e"),
+    text: [32m'Complete 12.7'[39m,
+    done: [33mfalse[39m,
+    __v: [33m0[39m
+  }
+]
+[1G[0Jthe_database> [15Gdb.todos.insertOne({text[33mtext[39m: [32m"[39m[32mI[39m[32mn[39m[32mc[39m[32mr[39m[32me[39m[32ma[39m[32ms[39m[32me[39m [32mt[39m[32mh[39m[32me[39m [32mn[39m[32mu[39m[32mm[39m[32mb[39m[32me[39m[32mr[39m [32mo[39m[32mf[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32ms[39m [32mi[39m[32mn[39m [32mm[39m[32my[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32mb[39m[32me[39m[32ml[39m[32mt[39m[32m"[39m})
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId("6432f261765839d81960a3ae")
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m})[88G[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId("6432e9c60ffbcf89a657df38"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("6432e9c60ffbcf89a657df39"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("6432ea0a5c86c16f545c631e"),
+    text: [32m'Complete 12.7'[39m,
+    done: [33mfalse[39m,
+    __v: [33m0[39m
+  },
+  {
+    _id: ObjectId("6432f261765839d81960a3ae"),
+    text: [32m'Increase the number of tools in my toolbelt'[39m
+  }
+]
+[1G[0Jthe_database> [15Gdb.do[1G[0Jthe_database> db.d[19G[1G[0Jthe_database> db.[18Gtodos.deleteOne({_id[33m_id[39m: Objec[36mObject[39mObjectId([32m"[39m[32m6[39m[32m4[39m[32m3[39m[32m2[39m[32mf[39m[32m2[39m[32m6[39m[32m1[39m[32m7[39m[32m6[39m[32m5[39m[32m8[39m[32m3[39m[32m9[39m[32md[39m[32m8[39m[32m1[39m[32m9[39m[32m6[39m[32m0[39m[32ma[39m[32m3[39m[32ma[39m[32me[39m[32m"[39m)})
+{ acknowledged: [33mtrue[39m, deletedCount: [33m1[39m }
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.deleteOne({[33m_id[39m: ObjectId([32m"6432f261765839d81960a3ae"[39m)})[78G[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId("6432e9c60ffbcf89a657df38"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("6432e9c60ffbcf89a657df39"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("6432ea0a5c86c16f545c631e"),
+    text: [32m'Complete 12.7'[39m,
+    done: [33mfalse[39m,
+    __v: [33m0[39m
+  }
+]
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.find({})[32G[1G[0Jthe_database> db.todos.deleteOne({[33m_id[39m: ObjectId([32m"6432f261765839d81960a3ae"[39m)})[78G[1G[0Jthe_database> db.todos.find({})[32G[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m})[88G[1D[1G[0Jthe_database> db.todos.insertOne[44m([49m{[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m})[87G[1G[0Jthe_database> db.todos.insertOne[44m([49m{[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m},)[88G[1G[0Jthe_database> db.todos.insertOne[44m([49m{[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m})[87G[1D[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m})[86G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m,})[87G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, })[88G[1D[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, })[87G[1C[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, })[88G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, d})[89G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [36mdo[39m})[90G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, don})[91G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, done})[92G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m:})[93G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: })[94G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: f})[95G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: fa})[96G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: fal})[97G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: fals})[98G[1G[0Jthe_database> db.todos.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[99G[2C[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[101G
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId("6432f2e2765839d81960a3af")
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[101G[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId("6432e9c60ffbcf89a657df38"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("6432e9c60ffbcf89a657df39"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("6432ea0a5c86c16f545c631e"),
+    text: [32m'Complete 12.7'[39m,
+    done: [33mfalse[39m,
+    __v: [33m0[39m
+  },
+  {
+    _id: ObjectId("6432f2e2765839d81960a3af"),
+    text: [32m'Increase the number of tools in my toolbelt'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gexit
+[?2004hroot@0e8ed1310802:/# exit
+[?2004lexit
+]0;dmnalex@starsaber: ~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[01;32mdmnalex@starsaber[00m:[01;34m~/Projects/fullstackopen-extra/part12-containers-applications/script-answers[00m$ exit
+exit
+
+Script done on 2023-04-10 00:16:58+07:00 [COMMAND_EXIT_CODE="0"]
